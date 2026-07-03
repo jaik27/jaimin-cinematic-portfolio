@@ -1,0 +1,491 @@
+.wrap {
+  position: relative;
+  z-index: 2;
+  padding: clamp(72px, 11vw, 150px) 0 120px;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(255, 141, 59, 0.12), transparent 28rem),
+    radial-gradient(circle at 88% 8%, rgba(90, 137, 255, 0.1), transparent 34rem),
+    linear-gradient(180deg, rgba(3,3,3,0.98), #060607 18%, #050506 76%, #020202);
+  overflow: clip;
+}
+
+.wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 76%, transparent);
+}
+
+.sectionIntro {
+  position: relative;
+  z-index: 1;
+  width: min(var(--max), calc(100% - 44px));
+  margin: 0 auto clamp(46px, 7vw, 92px);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: rgba(255, 186, 127, 0.88);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.sectionIntro h2 {
+  max-width: 880px;
+  margin: 0;
+  font-size: clamp(2.7rem, 7vw, 7.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.075em;
+  text-wrap: balance;
+}
+
+.sectionIntro p:not(.eyebrow) {
+  margin: 22px 0 0;
+  max-width: 720px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.78;
+}
+
+.roleChips {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.roleChips span {
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.055);
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: rgba(255,255,255,0.78);
+  backdrop-filter: blur(16px);
+}
+
+.chapters {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(52px, 9vw, 112px);
+}
+
+.chapter {
+  width: min(var(--max), calc(100% - 44px));
+  margin: 0 auto;
+  min-height: min(880px, 92svh);
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.88fr);
+  gap: clamp(30px, 6vw, 78px);
+  align-items: center;
+  perspective: 1600px;
+}
+
+.chapter:nth-child(even) .chapterCopy {
+  order: 2;
+}
+
+.chapter:nth-child(even) .motionVisual {
+  order: 1;
+}
+
+.chapterCopy h3 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5.4vw, 5.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.073em;
+  text-wrap: balance;
+}
+
+.summary {
+  max-width: 610px;
+  margin: 22px 0 0;
+  color: rgba(248, 243, 234, 0.72);
+  line-height: 1.82;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+}
+
+.bulletList {
+  list-style: none;
+  display: grid;
+  gap: 13px;
+  margin: 28px 0 0;
+  padding: 0;
+}
+
+.bulletList li {
+  position: relative;
+  padding-left: 28px;
+  color: rgba(248, 243, 234, 0.78);
+  line-height: 1.62;
+}
+
+.bulletList li::before {
+  content: '';
+  position: absolute;
+  top: 0.74em;
+  left: 0;
+  width: 13px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+  box-shadow: 0 0 12px rgba(255, 141, 59, 0.8);
+}
+
+.metricGrid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 520px;
+}
+
+.metric {
+  border: 1px solid rgba(255,255,255,0.13);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border-radius: 22px;
+  padding: 18px;
+  backdrop-filter: blur(18px);
+}
+
+.metric strong,
+.metric span {
+  display: block;
+}
+
+.metric strong {
+  color: #fff7ed;
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  letter-spacing: -0.04em;
+}
+
+.metric span {
+  margin-top: 6px;
+  color: rgba(248, 243, 234, 0.55);
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.motionVisual {
+  position: relative;
+  min-height: 520px;
+  transform-style: preserve-3d;
+  display: grid;
+  place-items: center;
+}
+
+.visualFrame {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 520px);
+  aspect-ratio: 1.12 / 1;
+  overflow: hidden;
+  border-radius: 34px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 42px 110px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.14);
+  transform: translateZ(54px);
+}
+
+.visualFrame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 24% 12%, rgba(255,255,255,0.12), transparent 28%), linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.22));
+  pointer-events: none;
+}
+
+.visualFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.06);
+}
+
+.stackDeck {
+  position: absolute;
+  inset: auto 32px 42px auto;
+  z-index: 4;
+  display: grid;
+  gap: 12px;
+  transform-style: preserve-3d;
+}
+
+.stackDeck span {
+  width: 112px;
+  height: 60px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(10,10,14,0.62);
+  color: rgba(255,255,255,0.78);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.4);
+}
+
+.tunnel .visualFrame {
+  border-radius: 999px;
+  aspect-ratio: 1;
+}
+
+.tunnelRings {
+  position: absolute;
+  inset: 2%;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.tunnelRings i {
+  position: absolute;
+  width: min(76%, 430px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 160, 87, 0.23);
+  border-radius: 50%;
+  box-shadow: 0 0 48px rgba(255, 141, 59, 0.11), inset 0 0 32px rgba(115, 167, 255, 0.08);
+}
+
+.tunnelRings i:nth-child(2) { width: min(92%, 520px); transform: rotateX(62deg); }
+.tunnelRings i:nth-child(3) { width: min(108%, 610px); transform: rotateY(58deg); }
+.tunnelRings i:nth-child(4) { width: min(122%, 680px); transform: rotateX(72deg) rotateY(22deg); }
+
+.opsBoard {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  z-index: 4;
+  display: grid;
+  gap: 10px;
+  transform: translateZ(88px);
+}
+
+.opsBoard span {
+  width: min(72%, 380px);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(12,13,16,0.68);
+  padding: 12px 18px;
+  backdrop-filter: blur(20px);
+  color: rgba(255,255,255,0.74);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.34);
+}
+
+.opsBoard span:nth-child(even) {
+  justify-self: end;
+}
+
+.orbitSet {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.orbitSet figure {
+  position: absolute;
+  width: 142px;
+  aspect-ratio: 0.84;
+  overflow: hidden;
+  border-radius: 24px;
+  margin: 0;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 28px 72px rgba(0,0,0,0.52);
+}
+
+.orbitSet figure:nth-child(1) { top: 3%; right: 9%; }
+.orbitSet figure:nth-child(2) { left: 0%; bottom: 8%; width: 182px; aspect-ratio: 1.25; }
+.orbitSet figure:nth-child(3) { right: 3%; bottom: 4%; }
+
+.orbitSet img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blueprint .visualFrame {
+  aspect-ratio: 0.95 / 1;
+}
+
+.blueprintGrid {
+  position: absolute;
+  inset: 6%;
+  border-radius: 38px;
+  border: 1px solid rgba(115, 167, 255, 0.2);
+  box-shadow: inset 0 0 80px rgba(115, 167, 255, 0.08), 0 0 80px rgba(115, 167, 255, 0.08);
+}
+
+.blueprintGrid::before,
+.blueprintGrid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(115,167,255,0.13) 1px, transparent 1px), linear-gradient(90deg, rgba(115,167,255,0.13) 1px, transparent 1px);
+  background-size: 28px 28px;
+  border-radius: inherit;
+  opacity: 0.55;
+}
+
+.blueprintGrid span {
+  position: absolute;
+  border: 1px solid rgba(115, 167, 255, 0.32);
+  border-radius: 50%;
+  transform-origin: center;
+}
+
+.blueprintGrid span:nth-child(1) { inset: 12% 18%; }
+.blueprintGrid span:nth-child(2) { inset: 22% 8% 28% 24%; }
+.blueprintGrid span:nth-child(3) { inset: 10% 32% 38% 8%; }
+
+.assetStrip {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(44px, 8vw, 96px);
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.028);
+}
+
+.assetTrack {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  padding: 24px 18px;
+  will-change: transform;
+}
+
+.assetTrack figure {
+  width: clamp(260px, 33vw, 430px);
+  margin: 0;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.045);
+}
+
+.assetTrack img {
+  width: 100%;
+  aspect-ratio: 1.55;
+  object-fit: cover;
+}
+
+.assetTrack figcaption {
+  padding: 12px 15px 16px;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.83rem;
+}
+
+@media (max-width: 920px) {
+  .chapter,
+  .chapter:nth-child(even) {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .chapter:nth-child(even) .chapterCopy,
+  .chapter:nth-child(even) .motionVisual {
+    order: initial;
+  }
+
+  .chapterCopy {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+  }
+
+  .bulletList {
+    max-width: 620px;
+    text-align: left;
+  }
+
+  .motionVisual {
+    min-height: 400px;
+    width: 100%;
+  }
+
+  .visualFrame {
+    width: min(100%, 540px);
+  }
+}
+
+@media (max-width: 560px) {
+  .wrap {
+    padding-top: 72px;
+  }
+
+  .sectionIntro,
+  .chapter {
+    width: min(100% - 28px, 420px);
+  }
+
+  .sectionIntro h2 {
+    font-size: clamp(2.6rem, 15vw, 4.3rem);
+  }
+
+  .sectionIntro p:not(.eyebrow),
+  .summary,
+  .bulletList li {
+    font-size: 0.94rem;
+  }
+
+  .roleChips span {
+    padding: 9px 12px;
+    font-size: 0.78rem;
+  }
+
+  .chapterCopy h3 {
+    font-size: clamp(2.25rem, 13vw, 3.7rem);
+  }
+
+  .metricGrid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .motionVisual {
+    min-height: 330px;
+  }
+
+  .visualFrame {
+    border-radius: 26px;
+  }
+
+  .orbitSet figure {
+    width: 98px;
+    border-radius: 18px;
+  }
+
+  .orbitSet figure:nth-child(2) {
+    width: 132px;
+  }
+
+  .opsBoard span {
+    width: 78%;
+    font-size: 0.76rem;
+    padding: 10px 13px;
+  }
+
+  .stackDeck span {
+    width: 86px;
+    height: 48px;
+    border-radius: 14px;
+    font-size: 0.82rem;
+  }
+}
